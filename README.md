@@ -1,6 +1,6 @@
 # bq-starter
 ![](https://github.com/thinkingmachines/heartbeat-bqups/workflows/Bqup/badge.svg)
-> Starter template for bq and bqup
+> This repository serves as template for running bqup on GCP projects using Github actions
 
 ## Setup
 
