@@ -1,0 +1,33 @@
+name: Bqup
+on:
+  schedule:
+    - cron: '0 8 * * *' # daily at 8am
+jobs:
+  bqup:
+    name: Bqup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: master
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.7'
+      - name: Run Bqup
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: keyfile.json
+          GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+        run: |
+          echo "$GCP_SA_KEY" > keyfile.json
+          pip3 install bqup
+          bqup -p $GCP_PROJECT_ID -f -d bqups
+      - name: Push bqup
+        run: |
+          git add -A bqups
+          git status
+          git config user.name BQUP
+          git config user.email engineering@thinkingmachin.es
+          git diff-index --quiet HEAD || (git commit -m "Automated bqup" && git push origin master)
