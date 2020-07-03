@@ -1,4 +1,6 @@
-# Bqup
+# bqup-starter
+
+A starter template for automated [bqup](https://github.com/thinkingmachines/bqup)s
 
 ## Setup
 
