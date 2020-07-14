@@ -16,7 +16,7 @@ A starter template for automated [bqup](https://github.com/thinkingmachines/bqup
 3. Go to Settings -> Secrets and add the following secret environment variables
     - `GCP_SA_KEY` - Generated Service Account key (JSON) that has access to the dataset you want to backup
     - `GCP_PROJECT_ID` - Project ID in GCP of the project you want to backup
-    
+
 #### Manual
 
 1. Create a repository in Github. eg. `<name>-bqups`
@@ -28,13 +28,13 @@ A starter template for automated [bqup](https://github.com/thinkingmachines/bqup
     mkdir -p .github/workflows
     ```
 
-4. Create a `yml` file inside `.github/workflows` and copy the following contents. You can name it anything you want but for simplicity, you can just name it `bqup.yml`. 
+4. Create a `yml` file inside `.github/workflows` and copy the following contents. You can name it anything you want but for simplicity, you can just name it `bqup.yml`.
 
     ```yaml
     name: bqup
     on:
       schedule:
-        - cron: '0 8 * * *' # Runs the bqup daily at 8am. Feel free to change this to your needs
+        - cron: '0 16 * * *' # Runs the bqup daily at 4pm UTC. Feel free to change this to your needs
     jobs:
       bqup:
         name: Bqup
@@ -66,7 +66,7 @@ A starter template for automated [bqup](https://github.com/thinkingmachines/bqup
               git diff-index --quiet HEAD || (git commit -m "Automated bqup" && git push origin master)
     ```
 
-5. Go to Settings -> Secrets in Github and add the following secret environment variables 
+5. Go to Settings -> Secrets in Github and add the following secret environment variables
     - `GCP_SA_KEY` - Generated Service Account key (JSON) that has access to the dataset you want to backup
     - `GCP_PROJECT_ID` - Project ID in GCP of the project you want to backup
 
