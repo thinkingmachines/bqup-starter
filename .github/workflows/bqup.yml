@@ -1,7 +1,7 @@
 name: Bqup
 on:
   schedule:
-    - cron: '0 8 * * *' # daily at 8am
+    - cron: '0 4 * * *' # daily at 4am UTC
 jobs:
   bqup:
     name: Bqup
