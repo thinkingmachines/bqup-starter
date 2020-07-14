@@ -34,7 +34,7 @@ A starter template for automated [bqup](https://github.com/thinkingmachines/bqup
     name: bqup
     on:
       schedule:
-        - cron: '0 4 * * *' # Runs the bqup daily at 4am UTC. Feel free to change this to your needs
+        - cron: '0 16 * * *' # Runs the bqup daily at 4pm UTC. Feel free to change this to your needs
     jobs:
       bqup:
         name: Bqup
